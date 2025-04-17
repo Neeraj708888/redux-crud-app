@@ -42,12 +42,8 @@ const UserDetails = () => {
                 <p><span className="font-medium">Email:</span> {user.email}</p>
                 <p><span className="font-medium">Age:</span> {user.age}</p>
                 <p><span className="font-medium">Mobile:</span> {user.mobile}</p>
-                {/* <p><span className="font-medium">Address:</span> {user.address}</p> */}
-                <p><span className="font-medium">Address:</span> {typeof user.address === 'object' ? JSON.stringify(user.address) : user.address}</p>
-
                 <p><span className="font-medium">Gender:</span> {user.gender}</p>
               </div>
-       
             ))
         }
         </div>
