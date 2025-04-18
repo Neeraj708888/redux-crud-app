@@ -1,33 +1,38 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate()
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-blue-700 text-white">
+    <nav className="bg-gradient-to-r from-teal-300 via-yellow-300 to-blue-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="text-xl font-bold">MyApp</span>
+            <marquee className= 'bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-2 rounded-2xl'><span className="text-xl font-bold ">Reduxt-toolkit Application</span></marquee>
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-4">
-            <a href="#" className="hover:bg-blue-600 px-3 py-2 rounded-md">Home</a>
-            <a href="#" className="hover:bg-blue-600 px-3 py-2 rounded-md">About</a>
-            <a href="#" className="hover:bg-blue-600 px-3 py-2 rounded-md">Services</a>
-            <a href="#" className="hover:bg-blue-600 px-3 py-2 rounded-md">Contact</a>
+          <div className="hidden md:flex items-center space-x-4 font-semibold ">
+          <button  className="hover:bg-blue-600 px-3 py-2 rounded-md text-2xl" onClick={() => navigate('/allUsers')}>All Users</button>
+          <button  className="hover:bg-blue-600 px-3 py-2 rounded-md text-xl" onClick={() => navigate('/delete')}>Delete User</button>
+          <button  className="hover:bg-blue-600 px-3 py-2 rounded-md" onClick={() => navigate('/')}>Create User</button>
+          <button  className="hover:bg-blue-600 px-3 py-2 rounded-md" onClick={() => navigate('/read')}>Last Added User</button>
 
             {/* Search Box */}
             <div className="ml-4">
               <input
                 type="text"
                 placeholder="Search..."
-                className="px-3 py-1 rounded-md text-black focus:outline-none"
+                className="px-3 py-1 rounded-md tracking-tighter font-semibold focus:outline-none
+                 hover:placeholder:text-gray-400 hover:placeholder:text-center text-black bg-gradient-to-b from-gray-200 via-red-200 to-green-100 cursor-pointer"
               />
             </div>
           </div>

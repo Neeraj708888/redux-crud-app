@@ -2,7 +2,7 @@ import React from 'react'
 import PostDetails from './components/PostDetails';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Navbar from './components/Navbar';
-import UserDetails from './components/UserDetails';
+import GetUsers from './components/GetUsers';
 import GetAllUsers from './components/GetAllUsers';
 import DeleteUser from './components/DeleteUser';
 
@@ -13,7 +13,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route exact path='/' element={<PostDetails/>}/>
-        <Route path='/read' element={<UserDetails/>}/>
+        <Route path='/read' element={<GetUsers/>}/>
         <Route path='/allUsers' element={<GetAllUsers/>}/>
         <Route path='/delete' element={<DeleteUser/>}/>
       </Routes>
