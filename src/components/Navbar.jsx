@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const user =  useSelector((state) => state.user.users);
 
   const navigate = useNavigate()
 
@@ -21,13 +24,15 @@ const Navbar = () => {
 
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-4 font-semibold ">
-          <button  className="hover:bg-blue-600 px-3 py-2 rounded-md text-2xl" onClick={() => navigate('/allUsers')}>All Users</button>
-          <button  className="hover:bg-blue-600 px-3 py-2 rounded-md text-xl" onClick={() => navigate('/delete')}>Delete User</button>
-          <button  className="hover:bg-blue-600 px-3 py-2 rounded-md" onClick={() => navigate('/')}>Create User</button>
-          <button  className="hover:bg-blue-600 px-3 py-2 rounded-md" onClick={() => navigate('/read')}>Last Added User</button>
+          <button  className="hover:bg-blue-600 px-1 py-1 rounded-md text-2xl" onClick={() => navigate('/allUsers')}>All Users</button>
+          <button  className="hover:bg-blue-600 px-1.5 py-1.5 rounded-md text-xl" onClick={() => navigate('/delete')}>Delete User</button>
+          <button  className="hover:bg-blue-600 px-2 py-2 rounded-md" onClick={() => navigate('/')}>Create User</button>
+          <button  className="hover:bg-blue-600 px-2 py-2 rounded-md" onClick={() => navigate('/read')}>Last Added User</button>
+
+          <p className='hover:bg-blue-600 px-3 py-2 rounded-md text-red-400'> Count <span className='text-green-900'>({user.length})</span></p>
 
             {/* Search Box */}
-            <div className="ml-4">
+            <div className="border rounded-b-sm">
               <input
                 type="text"
                 placeholder="Search..."

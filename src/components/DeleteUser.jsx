@@ -22,7 +22,7 @@ const DeleteUser = () => {
     <div className="min-h-screen bg-gray-900 p-6">
       <button
         onClick={() => navigate(-1)}
-        className="text-white text-xl font-semibold mb-4 border p-3 rounded-xl hover:bg-gray-800"
+        className="text-white text-xl font-semibold mb-4 border p-2 rounded-xl hover:bg-gray-800"
       >
         ← Go Back
       </button>

@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import GetUsers from './components/GetUsers';
 import GetAllUsers from './components/GetAllUsers';
 import DeleteUser from './components/DeleteUser';
+import EditUser from './components/EditUser';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/read' element={<GetUsers/>}/>
         <Route path='/allUsers' element={<GetAllUsers/>}/>
         <Route path='/delete' element={<DeleteUser/>}/>
+        <Route path='/edit/:id' element={<EditUser/>}/>
       </Routes>
     </Router>
   )

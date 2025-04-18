@@ -3,6 +3,8 @@ import { createAsyncThunk, createSlice, isRejectedWithValue } from "@reduxjs/too
 const api_url = 'https://67ff70c358f18d7209f13244.mockapi.io/crud';
 
 // post data - it return the promises like pending, fulfilled, reject so we have to handle from extra reducer outside
+
+// ................  POST/ADD ................
 export const postData = createAsyncThunk('postData', async (data) => {
 
     const response = await fetch(api_url, {
@@ -21,8 +23,7 @@ export const postData = createAsyncThunk('postData', async (data) => {
     }
 });
 
-// get Data
-// ✅ Thunk to fetch all users
+// ..................  GET  ........................
 export const getUserData = createAsyncThunk('users/getUserData', async () => {
     const res = await fetch(api_url);
     if (!res.ok) {
@@ -32,14 +33,41 @@ export const getUserData = createAsyncThunk('users/getUserData', async () => {
     return data; // should be an array of users
   });
 
-  // Delete Data
-  export const deleteUserData = createAsyncThunk('user/deleteUserData', async (id)=> {
+  // ...............   DELETE  .......................
+export const deleteUserData = createAsyncThunk('user/deleteUserData', async (id)=> {
     await fetch(`${api_url}/${id}`, {
         method: 'DELETE'
     });
 
     return id; // Return the id so that it can be removed from local state
   });
+
+  // ................  UPDATE  .....................
+  export const updateUserData = createAsyncThunk(
+    'user/updateUserData',
+    async ({ id, updatedUser }, { rejectWithValue }) => {
+      try {
+        const response = await fetch(`${api_url}/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedUser),
+        });
+  
+        if (!response.ok) {
+          throw new Error("Failed to update user!");
+        }
+  
+        const data = await response.json();
+        return data; // updated user
+      } catch (error) {
+        return rejectWithValue(error.message);
+      }
+    }
+  );
+  
+
 const userDetail = createSlice({
     name: 'userDetail',
     initialState: {
@@ -96,6 +124,24 @@ const userDetail = createSlice({
         .addCase(deleteUserData.rejected, (state, action)=> {
             state.loading = false;
             state.error = action.error.message;
+        });
+
+        // ------------>>>>>>>>>>>> UPDATE
+        builder
+        .addCase(updateUserData.pending, (state)=> {
+            state.loading = true;
+        })
+        .addCase(updateUserData.fulfilled, (state, action)=> {
+            state.loading = false;
+            const index = state.users.findIndex(user => user.id === action.payload.id); 
+            if(index !== -1)   // index === -1 it means matching user was found but here checks user was not found so skip updating
+            {
+                state.users[index] = action.payload;
+            } 
+        })
+        .addCase(updateUserData.rejected, (state, action)=> {
+            state.loading = false;
+            state.error = action.payload || action.error.message; 
         });
     }
     

@@ -21,7 +21,7 @@ const UserDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 p-6">
-      <button onClick={() => navigate(-1)} className='text-center font-bold text-white text-2xl mb-6 border rounded-2xl p-4 mt-2 justify-center items-center justify-items-center'> Go Back</button>
+      <button onClick={() => navigate(-1)} className='text-center font-bold text-white text-2xl mb-6 border rounded-2xl p-2 mt-2 justify-center items-center justify-items-center hover:bg-yellow-800'> Go Back</button>
       <div className='grid grid-cols-1 items-center justify-center mb-4  gap-2' >
         <p className='text-center font-bold text-white text-2xl mb-6 rounded-2xl p-4 mt-2 justify-center items-center justify-items-center'>User Records</p>
       </div>
