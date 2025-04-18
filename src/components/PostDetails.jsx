@@ -25,8 +25,9 @@ const PostDetails = () => {
 
    
   return (
-    <div className='min-hight-screen bg-gray-800 flex items-center justify-center p-4'>
-        <form onSubmit={handleSubmit} className='min-w-1/6 max-w-2xl bg-white rounded-xl shadow-md p-6 space-y-6'>
+    <div className='min-hight-screen bg-gray-800 flex flex-col items-center justify-center p-4'>
+        <p className='text-center font-bold text-white text-2xl mb-6 rounded-2xl p-2 mt-2 justify-center items-center justify-items-center'>Add Users</p>
+        <form onSubmit={handleSubmit} className='min-w-1/4 max-w-2xl bg-white rounded-xl shadow-md p-4 space-y-4'>
             <fieldset className='border border-gray-300 rounded-md p-4'>
                 <legend className='text-lg font-semibold text-gray-700 px-2'>Name</legend>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-2'>

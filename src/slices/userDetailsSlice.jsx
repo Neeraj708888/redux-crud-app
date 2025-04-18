@@ -74,7 +74,14 @@ const userDetail = createSlice({
         users: [],
         loading: false,
         error: null,
-    },
+        search: '',   // New State for seraching
+     },
+
+    //  reducers: {
+    //     setSearch: (state, action) => {
+    //         state.search = action.payload;
+    //     }
+    //  },
 
 // here we are using extraReduces to handle the API Data
     extraReducers: (builder) => {
@@ -147,4 +154,5 @@ const userDetail = createSlice({
     
 });
 
+export const {setSearch} = userDetail.actions;
 export default userDetail.reducer;

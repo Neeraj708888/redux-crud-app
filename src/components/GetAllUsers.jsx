@@ -6,11 +6,17 @@ import ViewUsers from './ViewUsers';
 
 const UserDetails = () => {
 
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { users, loading, error } = useSelector((state) => state.user);
+  const { users, loading, error, search } = useSelector((state) => state.user);
 
   const [selectedUser, setSelectedUser] = useState(null)  // holds the clicked user
+
+  // implement the searching functionality
+  // const filterUserData = users.filter((user)=> {
+  //   user.name.toLowerCase().includes(search.toLowerCase())
+  // })
 
 
   useEffect(() => {
@@ -35,7 +41,7 @@ const UserDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 p-6">
-      <button onClick={() => navigate(-1)} className='text-center font-bold text-white text-2xl mb-6 border rounded-2xl p-2 mt-2 justify-center items-center justify-items-center'> Go Back</button>
+      <button onClick={() => navigate(-1)} className='text-center font-bold text-white text-xl mb-6 border rounded-2xl p-2 mt-2 justify-center items-center justify-items-center hover:text-teal-500 transition'> Go Back</button>
       <div className='grid grid-cols-2 items-center justify-center mb-4  gap-2' >
       </div>
 
