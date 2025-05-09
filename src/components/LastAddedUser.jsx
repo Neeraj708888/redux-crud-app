@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUserData } from '../slices/userDetailsSlice';
 import { useNavigate } from 'react-router-dom';
 
-const UserDetails = () => {
+const LastAddedUser = () => {
   const dispatch = useDispatch();
   const { users, loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -48,4 +48,4 @@ const UserDetails = () => {
   );
 }
 
-export default UserDetails;
+export default LastAddedUser;

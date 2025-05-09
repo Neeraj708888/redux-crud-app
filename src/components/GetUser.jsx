@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteUserData, getUserData } from '../slices/userDetailsSlice';
 import { useNavigate } from 'react-router-dom';
-import ViewUsers from './ViewUsers';
+import ViewUsers from './ViewUser';
 
-const UserDetails = () => {
+const GetUser = () => {
 
 
   const dispatch = useDispatch();
@@ -116,4 +116,4 @@ const UserDetails = () => {
   );
 }
 
-export default UserDetails;
+export default GetUser;

@@ -8,7 +8,7 @@ const Navbar = () => {
 
 
   const [isOpen, setIsOpen] = useState(false);
-  // const user =  useSelector((state) => state.user.users);
+  const user =  useSelector((state) => state.user.users);
   const navigate = useNavigate()
   const dispatch = useDispatch();
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -27,16 +27,17 @@ const Navbar = () => {
 
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-4 font-semibold ">
-            <button className="hover:bg-blue-600 px-1 py-1 rounded-md text-md" onClick={() => 
+            <button className="hover:bg-blue-200 px-1.5 py-1.5 rounded-md text-md text-green-950" onClick={() => navigate('/')}>Home</button>
+            <button className="hover:bg-blue-200 px-1 py-1 rounded-md text-md  text-green-900" onClick={() => 
               {
               dispatch(setSearch('')); // Reset the search state
               navigate('/allUsers');
               }}>All Users</button>
-            <button className="hover:bg-blue-600 px-1.5 py-1.5 rounded-md text-md" onClick={() => navigate('/delete')}>Delete User</button>
-            <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md" onClick={() => navigate('/')}>Create User</button>
-            <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-md" onClick={() => navigate('/read')}>Last Added User</button>
+            <button className="hover:bg-blue-200 px-1.5 py-1.5 rounded-md text-md  text-green-800" onClick={() => navigate('/delete')}>Delete User</button>
+            <button className="hover:bg-blue-200 px-2 py-2 rounded-md text-md  text-green-700" onClick={() => navigate('/')}>Create User</button>
+            <button className="hover:bg-blue-200 px-2 py-2 rounded-md text-md  text-green-600" onClick={() => navigate('/read')}>Last Added User</button>
 
-            <p className='hover:bg-blue-600 px-3 py-2 rounded-md text-red-400'> Count <span className='text-green-900'>User Count</span></p>
+            <p className=' px-3 py-2 rounded-md text-red-400'> Count <span className='text-green-900'>{user ? user.length : 0}</span></p>
 
             {/* Search Box */}
             <div className="border rounded-b-sm">
@@ -64,12 +65,13 @@ const Navbar = () => {
       {/* Mobile menu dropdown */}
       {isOpen && (
         <div className="md:hidden px-4 pb-4 space-y-2 flex flex-col">
-          <button className="hover:bg-blue-600 px-1 py-1 rounded-md text-xl" onClick={() => navigate('/allUsers')}>All Users</button>
-          <button className="hover:bg-blue-600 px-1.5 py-1.5 rounded-md text-xl" onClick={() => navigate('/delete')}>Delete User</button>
-          <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={() => navigate('/')}>Create User</button>
-          <button className="hover:bg-blue-600 px-2 py-2 rounded-md text-xl" onClick={() => navigate('/read')}>Last Added User</button>
+          <button className="hover:bg-blue-100 px-1 py-1 rounded-md text-xl text-green-950" onClick={() => navigate('/')}>Home</button>
+          <button className="hover:bg-blue-100 px-1 py-1 rounded-md text-xl  text-green-900" onClick={() => navigate('/allUsers')}>All Users</button>
+          <button className="hover:bg-blue-100 px-1.5 py-1.5 rounded-md text-xl  text-green-800" onClick={() => navigate('/delete')}>Delete User</button>
+          <button className="hover:bg-blue-100 px-2 py-2 rounded-md text-xl  text-green-700" onClick={() => navigate('/')}>Create User</button>
+          <button className="hover:bg-blue-100 px-2 py-2 rounded-md text-xl  text-green-600" onClick={() => navigate('/read')}>Last Added User</button>
 
-          <p className='hover:bg-blue-600 px-3 py-2 rounded-md text-red-400 font-bold text-center'> Total User <span className='text-green-900'>User Length</span></p>
+          <p className=' px-3 py-2 rounded-md text-red-400 font-bold text-center'> Total User <span className='text-green-900'>User Length</span></p>
 
           {/* Mobile Search Box */}
           <div className="mt-2 items-center flex justify-center">
